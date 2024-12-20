@@ -9,7 +9,7 @@ export const useSignup = () => {
             console.log('Successfully signed up',data);
         },
         onError: (error)=> {
-            console.error('Failed to sign up',data);
+            console.error('Failed to sign up',error);
         }
     });
 

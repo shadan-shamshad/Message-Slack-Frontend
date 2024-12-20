@@ -1,18 +1,15 @@
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { Auth } from './pages/Auth/Auth';
 
-import { Button } from '@/components/ui/button';
+
 
 function App() {
 
   return (
-    
-    <>
-      HELLO
-      <div>
-          <Button>Click ME</Button>
-      </div>
-     
-    </>
+    <Routes>
+      <Route path='/auth' element={< Auth/>}/>
+    </Routes>
   );
 }
 
