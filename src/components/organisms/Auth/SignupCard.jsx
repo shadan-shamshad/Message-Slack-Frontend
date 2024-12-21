@@ -1,10 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useState } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
+import { useNavigate } from 'react-router-dom';
 
 export const SignupCard = () => {
+
+    const navigate = useNavigate('');
 
    const [signupForm, setSignupForm] = useState({
         email: '',
@@ -17,7 +21,6 @@ export const SignupCard = () => {
             <CardHeader>
                 <CardTitle>Sign Up</CardTitle>
                 <CardDescription>
-
                     Sign up to access your account 
                 </CardDescription>
             </CardHeader>
@@ -47,14 +50,7 @@ export const SignupCard = () => {
                         type= "password"
                         disabled= {false}
                     />
-                     <Input
-                        placeholder='Your username'
-                        required
-                        onChange={(e)=>setSignupForm({ ...signupForm, username: e.target.value })}
-                        value = {signupForm.username}
-                        type= "text"
-                        disabled= {false}
-                    />
+                   
                     <Button
                         disabled={false}
                         size="lg"
@@ -67,9 +63,14 @@ export const SignupCard = () => {
                 <Separator className="my-5"/>
                 <p className="text-s text-muted-foreground mt-4">
                     Already have an account ? { ' '}
-                    <span className="text-sky-600 hover:underline cursor-pointer"> Sign In</span>
+                    <span 
+                        className="text-sky-600 hover:underline cursor-pointer"
+                        onClick={()=> navigate('/auth/signin')}
+                    >
+                         Sign In
+                    </span>
                 </p>
             </CardContent>
        </Card>
-    )
-}
+    );
+};
