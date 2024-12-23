@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { useNavigate } from 'react-router-dom';
 
-export const SiginCard = () => {
+export const SigninCard = () => {
 
     const navigate = useNavigate('');
 
