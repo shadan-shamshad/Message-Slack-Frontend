@@ -23,9 +23,6 @@ export const SigninContainer =() => {
             if(!signinForm.email || !signinForm.password){
                 console.log('Please fill all the fields');
                 setValidationError({message:'Please fill all the fields'})
-                // toast({
-
-                // })
                 return;
             }
 
