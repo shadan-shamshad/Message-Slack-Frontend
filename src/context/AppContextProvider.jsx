@@ -7,7 +7,7 @@ import { AuthContextProvider } from './AuthContext';
 // import { WorkspacePreferencesModalContextProvider } from './WorkspacePreferencesModalContext';
 
 export const AppContextProvider = combineContext(
-    AuthContextProvider,
+    AuthContextProvider
     // WorkspaceContextProvider,
     // CreateWorkspaceContextProvider,
     // WorkspacePreferencesModalContextProvider,

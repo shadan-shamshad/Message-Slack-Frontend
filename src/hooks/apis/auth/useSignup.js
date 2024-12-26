@@ -13,7 +13,7 @@ export const useSignup = () => {
                 title: 'Successfully signed up',
                 message:'You will be redirected to the login page in a few seconds',
                 type:'success'
-            })
+            });
         },
         onError: (error)=> {
             console.error('Failed to sign up',error);
@@ -22,7 +22,7 @@ export const useSignup = () => {
                 message: error.message,
                 type:'error',
                 variant:'destructive'
-            })
+            });
         }
     });
 

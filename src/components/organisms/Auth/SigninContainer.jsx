@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { SigninCard } from "./SigninCard";
-import { useState, useEffect} from "react";
-import { useSignin } from "@/hooks/apis/auth/useSignin";
+import { useEffect,useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useSignin } from '@/hooks/apis/auth/useSignin';
+
+import { SigninCard } from './SigninCard';
 
 export const SigninContainer =() => {
 
@@ -11,8 +13,8 @@ export const SigninContainer =() => {
 
      const [signinForm, setSigninForm] = useState({
             email: '',
-            password:''
-           
+            password:'',
+          
        });
 
        const {isSuccess, isPending, error, signinMutation} = useSignin();
@@ -22,7 +24,7 @@ export const SigninContainer =() => {
 
             if(!signinForm.email || !signinForm.password){
                 console.log('Please fill all the fields');
-                setValidationError({message:'Please fill all the fields'})
+                setValidationError({message:'Please fill all the fields'});
                 return;
             }
 
@@ -31,14 +33,14 @@ export const SigninContainer =() => {
             await signinMutation({
                 email: signinForm.email,
                 password: signinForm.password,
-            })
-       }
+            });
+       };
 
          useEffect(() => {
                if(isSuccess){
                    setTimeout(()=> {
                        navigate('/home');
-                   },3000)
+                   },3000);
                }
             }, [isSuccess, isPending]);
        return(
@@ -51,6 +53,6 @@ export const SigninContainer =() => {
             isPending={isPending}
             error={error}
         />
-       )
+       );
 
-}
+};

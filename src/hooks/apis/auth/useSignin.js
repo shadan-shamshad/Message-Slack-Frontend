@@ -1,8 +1,8 @@
 import  { useMutation } from '@tanstack/react-query';
 
 import { signInRequest } from '@/apis/auth';
-import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/context/useAuth';
+import { useToast } from '@/hooks/use-toast';
 
 export const useSignin = () => {
     const { setAuth } = useAuth();
@@ -20,13 +20,13 @@ export const useSignin = () => {
                 token: response.data.token,
                 user: response.data,
                 loading: false
-            })
+            });
 
             toast({
                 title: 'Successfully signed in',
                 message:'You will be redirected to the home page in a few seconds',
                 type:'success'
-            })
+            });
         },
         onError: (error)=> {
             console.error('Failed to sign in',error);
@@ -35,7 +35,7 @@ export const useSignin = () => {
                 message: error.message,
                 type:'error',
                 variant:'destructive'
-            })
+            });
         }
     });
 
