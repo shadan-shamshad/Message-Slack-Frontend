@@ -1,9 +1,9 @@
-import { useCreateWorkspaceModal } from '@/hooks/context/useCreateWorkspaceModal';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { UserButton } from '@/components/atoms/UserButton/UserButton';
 import { useFetchWorkspace } from '@/hooks/apis/workspaces/useFetchWorkspace';
-import { useNavigate } from 'react-router-dom';
+import { useCreateWorkspaceModal } from '@/hooks/context/useCreateWorkspaceModal';
 
 
 export const Home = () => {
@@ -27,13 +27,15 @@ export const Home = () => {
             navigate(`/workspaces/${workspaces[0]._id}`);
         }
 
-    }, [isFetching, workspaces]);
+    }, [isFetching, workspaces, navigate]);
 
 
     return (
         <>
-            <h1>Home</h1> 
-            <UserButton />
+             <h1>HOME</h1>
+             <UserButton />
         </>
+           
+        
     );
 };
