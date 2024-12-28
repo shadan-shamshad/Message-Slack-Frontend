@@ -38,11 +38,12 @@ export const SignupContainer =() => {
 
         setValidationError(null);
 
-           await signupMutation({
+        await signupMutation({
             email: signupForm.email,
             password: signupForm.password,
             username: signupForm.username
         });
+        
        }
 
        useEffect(() => {

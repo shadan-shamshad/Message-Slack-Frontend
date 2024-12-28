@@ -1,15 +1,17 @@
 import combineContext from '@/utils/combineContext';
 
 import { AuthContextProvider } from './AuthContext';
+import { CreateWorkspaceContextProvider } from './CreateWorkspaceContext';
 // import { CreateChannelContextProvider } from './CreateChannelContext';
-// import { CreateWorkspaceContextProvider } from './CreateWorkspaceContext';
+
 // import { WorkspaceContextProvider } from './WorkspaceContext';
 // import { WorkspacePreferencesModalContextProvider } from './WorkspacePreferencesModalContext';
 
 export const AppContextProvider = combineContext(
-    AuthContextProvider
+    AuthContextProvider,
+    CreateWorkspaceContextProvider
     // WorkspaceContextProvider,
-    // CreateWorkspaceContextProvider,
+   
     // WorkspacePreferencesModalContextProvider,
     // CreateChannelContextProvider
 ); 

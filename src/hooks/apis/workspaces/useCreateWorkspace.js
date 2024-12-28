@@ -1,6 +1,7 @@
-import { useAuth } from "@/hooks/context/useAuth";
-import { createWorkspaceRequest } from "@/apis/workspaces";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
+
+import { createWorkspaceRequest } from '@/apis/workspaces';
+import { useAuth } from '@/hooks/context/useAuth';
 
 
 export const useCreateWorkspace = () => {
@@ -12,20 +13,10 @@ export const useCreateWorkspace = () => {
 
         onSuccess: (data)=>{
             console.log('Successfully created workspace',data);
-            // toast({
-            //     title: 'Successfully signed up',
-            //     message:'You will be redirected to the login page in a few seconds',
-            //     type:'success'
-            // });
         },
         onError: (error)=> {
             console.error('Failed to create workspace',error);
-            // toast({
-            //     title: 'Failed to sign up',
-            //     message: error.message,
-            //     type:'error',
-            //     variant:'destructive'
-            // });
+            
         }
     });
 

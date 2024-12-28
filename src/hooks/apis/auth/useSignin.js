@@ -5,14 +5,16 @@ import { useAuth } from '@/hooks/context/useAuth';
 import { useToast } from '@/hooks/use-toast';
 
 export const useSignin = () => {
-    const { setAuth } = useAuth();
     const { toast } = useToast();
+    const { setAuth } = useAuth();
     const {isPending, isSuccess, error, mutateAsync: signinMutation} = useMutation({
         mutationFn: signInRequest,
+        
         onSuccess: (response)=>{
             console.log('Successfully signed in',response);
 
             const userObject = JSON.stringify(response.data);
+            
             localStorage.setItem('user', userObject);
             localStorage.setItem('token', response.data.token);
 
