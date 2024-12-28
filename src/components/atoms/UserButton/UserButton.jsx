@@ -1,4 +1,4 @@
-import { LogOutIcon,  PencilIcon,  SettingsIcon } from 'lucide-react';
+
 import { useNavigate } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { useAuth } from '@/hooks/context/useAuth';
 import { useCreateWorkspaceModal } from '@/hooks/context/useCreateWorkspaceModal';
 import { useToast } from '@/hooks/use-toast';
+import { LogOutIcon, PencilIcon, SettingsIcon } from 'lucide-react';
 
 
 export const UserButton =() => {
@@ -24,11 +25,13 @@ export const UserButton =() => {
     async function handleLogout() {
         await logout();
         toast({
-            title: 'Successfully Signed out',
+            title: 'Successfully signed out',
             type: 'success'
         });
         navigate('/auth/signin');
+
     }
+
 
     return (
         <DropdownMenu>
