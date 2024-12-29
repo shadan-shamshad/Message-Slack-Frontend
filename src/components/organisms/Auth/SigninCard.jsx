@@ -14,12 +14,11 @@ export const SigninCard = ({
     validationError,
     error,
     isSuccess,
-    isPending
+    isPending 
 }) => {
 
     const navigate = useNavigate('');
   
-
     return(
        <Card className='w-full h-full'>
             <CardHeader>
