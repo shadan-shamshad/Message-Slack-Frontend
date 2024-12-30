@@ -16,9 +16,7 @@ export const WorkspaceLayout = ({ children }) => {
                         minSize={11}
                         className="bg-slack-medium"
                     >
-                        <div>
-                            Sidebar
-                        </div>
+                        <WorkspacePanel/>
                     </ResizablePanel>
                     <ResizableHandle withHandle/>
                     <ResizablePanel
