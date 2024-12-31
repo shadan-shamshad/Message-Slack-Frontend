@@ -5,6 +5,7 @@ import { useDeleteWorkspace } from "@/hooks/apis/workspaces/useDeleteWorkspace";
 import { useUpdateWorkspace } from "@/hooks/apis/workspaces/useUpdateWorkspace";
 import { useWorkspacePreferencesModal } from "@/hooks/context/useWorkspacePreferencesModal";
 import { useToast } from "@/hooks/use-toast";
+import { useConfirm } from "@/hooks/useConfirm";
 import { useQueryClient } from "@tanstack/react-query";
 import { TrashIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -22,6 +23,8 @@ export const WorkspacePreferencesModal = ()=> {
     const { initialValue , openPreferences, setOpenPreferences, workspace} = useWorkspacePreferencesModal();
     const { deleteWorkspaceMutation } = useDeleteWorkspace(workspaceId);
     const {isPending, updateWorkspaceMutation} =useUpdateWorkspace(workspaceId);
+    const {confirmation, ConfirmDialog} = useConfirm({title: 'Do you want to delete the workspace?', message: 'This action cannot be undone'});
+    const {confirmation: updateConfirmation, ConfirmDialog: updateDialog}=useConfirm({title:'Do you want to update the workspace?', message: 'This action cannot be undone.'})
     const [renameValue, setRenameValue]= useState(workspace?.name);
 
    function handleClose(){
@@ -35,6 +38,11 @@ export const WorkspacePreferencesModal = ()=> {
 
    async function handleDelete(){
     try{
+        const ok = await confirmation();
+        console.log('Confirmation received')
+        if(!ok){
+            return;
+        }
        await deleteWorkspaceMutation();
        navigate('/home');
        queryClient.invalidateQueries('fetchWorkspaces');
@@ -55,6 +63,12 @@ export const WorkspacePreferencesModal = ()=> {
    async function handleFormSubmit(e){
         e.preventDefault();
         try{
+            const ok = updateConfirmation();
+            console.log('Confirmation received');
+            if(!ok){
+                return;
+            }
+
             await updateWorkspaceMutation(renameValue);
             queryClient.invalidateQueries('fetchWorkspaces');
             setOpenPreferences(false);
@@ -72,6 +86,9 @@ export const WorkspacePreferencesModal = ()=> {
    } 
 
     return(
+        <>
+        <ConfirmDialog/>
+        <updateDialog/>
         <Dialog open={openPreferences} onOpenChange={handleClose}>
             <DialogContent className="p-0 bg-gray-50 overflow-hidden">
                 <DialogHeader className="p-4 border-b bg-white">
@@ -149,5 +166,6 @@ export const WorkspacePreferencesModal = ()=> {
                 </div>
             </DialogContent>
         </Dialog>
+        </>
     )
 }
