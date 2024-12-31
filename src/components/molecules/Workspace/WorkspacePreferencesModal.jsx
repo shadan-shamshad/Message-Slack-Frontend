@@ -1,15 +1,48 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useDeleteWorkspace } from "@/hooks/apis/workspaces/useDeleteWorkspace";
 import { useWorkspacePreferencesModal } from "@/hooks/context/useWorkspacePreferencesModal";
+import { useToast } from "@/hooks/use-toast";
+import { useQueryClient } from "@tanstack/react-query";
 import { TrashIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export const WorkspacePreferencesModal = ()=> {
 
-   const { initialValue , openPreferences, setOpenPreferences} = useWorkspacePreferencesModal();
+    const queryClient = useQueryClient();
+    const navigate = useNavigate();
+    const { toast } = useToast();
+    const [workspaceId, setWorkspaceId]= useState();
+   
+    const { initialValue , openPreferences, setOpenPreferences, workspace} = useWorkspacePreferencesModal();
+    const { deleteWorkspaceMutation } = useDeleteWorkspace(workspaceId);
 
    function handleClose(){
     setOpenPreferences(false);
+   }
+
+   useEffect(() => {
+    setWorkspaceId(workspace?._id);
+   }, [workspace]);
+   async function handleDelete(){
+    try{
+       await deleteWorkspaceMutation();
+       navigate('/home');
+       queryClient.invalidateQueries('fetchWorkspaces');
+       setOpenPreferences(false);
+       toast({
+        title: 'Workspace deleted successfully',
+        type: 'Success'
+       });
+    }catch(error){
+        console.log('Error in deleting workspace', error);
+        toast({
+            title: 'Error in deleting workspace',
+            type: 'error'
+           });
+    }
    }
 
     return(
@@ -34,7 +67,10 @@ export const WorkspacePreferencesModal = ()=> {
                             {initialValue}
                         </p>
                     </div>
-                    <Button className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50">
+                    <Button 
+                    className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50"
+                    onClick={handleDelete}
+                    >
                         <TrashIcon className="size-5"/>
                         <p className="text-sm font-semibold ">
                             DeleteWorkspace
