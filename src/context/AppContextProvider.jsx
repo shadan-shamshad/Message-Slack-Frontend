@@ -2,7 +2,7 @@ import combineContext from '@/utils/combineContext';
 
 import { AuthContextProvider } from './AuthContext';
 import { CreateWorkspaceContextProvider } from './CreateWorkspaceContext';
-// import { CreateChannelContextProvider } from './CreateChannelContext';
+import { CreateChannelContextProvider } from './CreateChannelContext';
 
 // import { WorkspaceContextProvider } from './WorkspaceContext';
  import { WorkspacePreferencesModalContextProvider } from './WorkspacePreferencesModalContext';
@@ -10,8 +10,8 @@ import { CreateWorkspaceContextProvider } from './CreateWorkspaceContext';
 export const AppContextProvider = combineContext(
     AuthContextProvider,
     CreateWorkspaceContextProvider,
-    // WorkspaceContextProvider,
+    //WorkspaceContextProvider,
    
      WorkspacePreferencesModalContextProvider,
-    // CreateChannelContextProvider
+    CreateChannelContextProvider
 ); 
