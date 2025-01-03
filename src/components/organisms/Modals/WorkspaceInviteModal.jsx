@@ -1,8 +1,9 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useResetJoinCode } from "@/hooks/apis/workspaces/useResetJoinCode";
 import { useToast } from "@/hooks/use-toast";
 import { CopyIcon, RefreshCcwIcon } from "lucide-react";
 
-export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, workspaceName, joinCode}) => {
+export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, workspaceName, joinCode, workspaceId}) => {
 
     const {toast} = useToast();
 
@@ -16,8 +17,17 @@ export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, works
         });
     };
 
+        const { resetJoinCodeMutation } = useResetJoinCode(workspaceId);
     async function handleResetCode(){
-        
+       try{
+        await resetJoinCodeMutation();
+        toast({
+            title:'Join code reset successfully',
+            type:'success'
+        });
+       }catch(error){
+        console,log('error in resetting join code', error);
+       }
     }
 
     return(
