@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { useParams } from "react-router-dom";
+import { useJoinWorkspaceRequest } from "@/hooks/apis/workspaces/useJoinWorkspace";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate, useParams } from "react-router-dom";
 import VerificationInput from "react-verification-input";
 
 export const JoinPage = () => {
+
+  
     const { workspaceId } =useParams();
     const navigate = useNavigate();
     const { toast } = useToast();
