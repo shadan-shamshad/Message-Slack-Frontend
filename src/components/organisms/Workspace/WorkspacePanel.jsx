@@ -66,6 +66,15 @@ export const WorkspacePanel = () => {
                 return <SideBarItem key={channel._id} icon={HashIcon} label={channel.name} id={channel._id}/>
             })}
            </WorkspacePanelSection>
+
+           <WorkspacePanelSection
+                label="Direct messages"
+                onIconClick={() => {}}
+            >
+                {workspace?.members?.map((item) => {
+                    return <UserItem key={item.memberId._id} label={item.memberId.username} id={item.memberId._id} image={item.memberId.avatar} />;
+                })}
+            </WorkspacePanelSection>
         </div>
     )
 }
