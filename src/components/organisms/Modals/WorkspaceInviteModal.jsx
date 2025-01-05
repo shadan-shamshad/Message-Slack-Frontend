@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useResetJoinCode } from "@/hooks/apis/workspaces/useResetJoinCode";
 import { useToast } from "@/hooks/use-toast";
@@ -6,9 +7,9 @@ import { CopyIcon, RefreshCcwIcon } from "lucide-react";
 export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, workspaceName, joinCode, workspaceId}) => {
 
     const {toast} = useToast();
+    const { resetJoinCodeMutation } = useResetJoinCode(workspaceId);
 
   async function handleCopy(){
-
        const inviteLink = `${joinCode}`;
        await navigator.clipboard.writeText(inviteLink);
        toast({
@@ -17,7 +18,7 @@ export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, works
         });
     };
 
-        const { resetJoinCodeMutation } = useResetJoinCode(workspaceId);
+       
     async function handleResetCode(){
        try{
         await resetJoinCodeMutation();
@@ -42,7 +43,7 @@ export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, works
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className="flex flex-col items-center justify-center py-10 gap-y">
+                <div className="flex flex-col items-center justify-center py-10 gap-y-4">
                     <p className="font-bold text-4xl uppercase">
                         {joinCode}
                     </p>
@@ -60,11 +61,9 @@ export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, works
                     >
                         Redirect to join page
                     </a>
-
                 </div>
 
                 <div className="flex items-center justify-center w-full">
-
                     <Button variant='outline' onClick=           {handleResetCode} >
                         Reset Join Code
                         <RefreshCcwIcon className='size-4 ml-2'/>
@@ -73,5 +72,5 @@ export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, works
 
             </DialogContent>
         </Dialog>
-    )
+    );
 };

@@ -50,7 +50,7 @@ export const SignupContainer =() => {
         if(isSuccess){
             setTimeout(()=> {
                 navigate('/auth/signin');
-            },3000);
+            }, 3000);
         }
        
        }, [isSuccess, navigate]);

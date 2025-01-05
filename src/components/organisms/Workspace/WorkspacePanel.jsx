@@ -1,4 +1,5 @@
-import { SideBarItem } from "@/components/atoms/UserButton/SideBarItem/SideBarItem";
+import { SideBarItem } from "@/components/atoms/SideBarItem/SideBarItem";
+import { UserItem } from "@/components/atoms/userItem/UserItem";
 import { WorkspacePanelHeader } from "@/components/molecules/Workspace/WorkspacePanelHeader";
 import { WorkspacePanelSection } from "@/components/molecules/Workspace/WorkspacePanelSection";
 import { useGetWorkspaceById } from "@/hooks/apis/workspaces/useGetWorkspaceById";
@@ -23,7 +24,7 @@ export const WorkspacePanel = () => {
                 <Loader className="animate-spin size-6 text-white"/>
             </div>
 
-        )
+        );
     }
     if(!isSuccess){
         return(
@@ -76,5 +77,5 @@ export const WorkspacePanel = () => {
                 })}
             </WorkspacePanelSection>
         </div>
-    )
-}
+    );
+};

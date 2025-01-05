@@ -7,7 +7,7 @@ export const useAddChannelToWorkspace = () => {
     
     const { auth } = useAuth();
 
-    const {isPending, isSuccess, error, mutateAsync: addChannelToWorkspaceMutation} = useMutation({
+    const { mutateAsync: addChannelToWorkspaceMutation, isPending, isSuccess, error} = useMutation({
         mutationFn: ({workspaceId, channelName}) => addChannelToWorkspaceRequest({workspaceId, channelName, token:auth?.token}),
 
         onSuccess: (data)=>{
@@ -20,9 +20,10 @@ export const useAddChannelToWorkspace = () => {
     });
 
     return {
+        addChannelToWorkspaceMutation,
         isPending,
         isSuccess,
-        error,
-        addChannelToWorkspaceMutation
+        error
+        
     };
 };

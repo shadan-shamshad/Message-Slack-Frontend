@@ -8,8 +8,6 @@ export const Auth = ({children}) => {
             <div className="md:h-auto md:w-[420px]">
                {children} 
             </div>
-           
-
         </div>
     );
 };

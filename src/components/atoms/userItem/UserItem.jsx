@@ -1,10 +1,9 @@
-import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { cva } from 'class-variance-authority';
 import { Link } from 'react-router-dom';
 
-import { Avatar } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { useCurrentWorkspace } from '@/hooks/context/useCurrentWorkspace';
+//import { useCurrentWorkspace } from '@/hooks/context/useCurrentWorkspace';
 import { cn } from '@/lib/utils';
 
 const userItemVariants = cva(

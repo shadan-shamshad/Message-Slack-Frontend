@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useJoinWorkspaceRequest } from "@/hooks/apis/workspaces/useJoinWorkspace";
 import { useToast } from "@/hooks/use-toast";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import VerificationInput from "react-verification-input";
 
 export const JoinPage = () => {
@@ -64,5 +64,5 @@ export const JoinPage = () => {
                 </Button>
             </div>
         </div>
- )
+ );
 };

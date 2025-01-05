@@ -22,7 +22,7 @@ export const SigninCard = ({
     return(
        <Card className='w-full h-full'>
             <CardHeader>
-                <CardTitle>Sign In</CardTitle>
+                <CardTitle>Sign In </CardTitle>
                 <CardDescription>
                     Sign in to access your account 
                 </CardDescription>
@@ -30,15 +30,17 @@ export const SigninCard = ({
                 {validationError && (
                     <div className='bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6'>
                     <TriangleAlert className='size-5' />
-                    <p>  {validationError.message}</p>
+                    <p>  {validationError.message} </p>
                     </div>
                 )}
+
                 {error && (
                     <div className='bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6'>
                     <TriangleAlert className='size-5' />
-                    <p>  {error.message}</p>
+                    <p>  {error.message} </p>
                     </div>
                 )}
+
                  {isSuccess && (
                     <div className='bg-primary/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-primary mb-5'>
                          <FaCheck className='size-5' />
@@ -48,6 +50,7 @@ export const SigninCard = ({
                     </div>
                 )}
             </CardHeader>
+
             <CardContent>
                 <form className='space-y-3' onSubmit={onSigninFormSubmit}>
                     <Input
@@ -78,13 +81,15 @@ export const SigninCard = ({
                     </Button>
                 </form>
                 <Separator className="my-5"/>
+
                 <p className="text-s text-muted-foreground mt-4">
-                    Do not have an account ? { ' '}
+                    Do not have an account ? {' '}
                     <span 
                     className="text-sky-600 hover:underline cursor-pointer"
                     onClick={()=> navigate('/auth/signup')}
                     >
                          Sign UP
+                         
                     </span>
                 </p>
             </CardContent>

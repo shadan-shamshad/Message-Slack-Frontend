@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export const Notfound = () => {
+export const Notfound = () => { 
     const navigate = useNavigate();
     return (
         <div 
@@ -19,7 +19,6 @@ export const Notfound = () => {
                     </p>
                 </CardHeader>
                 <CardContent>
-
                     <img
                         className='rounded-lg shadow-lg' 
                         src="https://www.digitalmesh.com/blog/wp-content/uploads/2020/05/404-error.jpg" />

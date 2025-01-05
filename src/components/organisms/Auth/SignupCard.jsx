@@ -27,18 +27,21 @@ export const SignupCard = ({
                 <CardDescription>
                     Sign up to access your account 
                 </CardDescription>
+
                 {validationError && (
                     <div className='bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6'>
                     <TriangleAlert className='size-5' />
-                    <p>  {validationError.message}</p>
+                    <p>  {validationError.message} </p>
                     </div>
                 )}
+
                 {error && (
                     <div className='bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6'>
                     <TriangleAlert className='size-5' />
-                    <p>  {error.message}</p>
+                         <p>  {error.message}</p>
                     </div>
                 )}
+                
                 {isSuccess && (
                     <div className='bg-primary/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-primary mb-5'>
                          <FaCheck className='size-5' />

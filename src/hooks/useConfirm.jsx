@@ -1,4 +1,5 @@
 
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
 
@@ -12,7 +13,7 @@ export const useConfirm = ({
         console.log('Confirmation triggered')
         return new Promise((resolve) => {
             setPromise({resolve});
-        })
+        });
     }
 
     const handleClose = () =>{
@@ -45,7 +46,7 @@ export const useConfirm = ({
                             Cancel
                         </Button>
                         <Button
-                            onClick={handleClose}
+                            onClick={handleConfirm}
                        
                         >
                             Confirm
@@ -53,10 +54,10 @@ export const useConfirm = ({
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-        )
-    }
+        );
+    };
 
     return{ConfirmDialog, confirmation};
 
    
-}
+};

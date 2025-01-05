@@ -1,4 +1,4 @@
-import { useEffect,useState} from 'react';
+import { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSignin } from '@/hooks/apis/auth/useSignin';
@@ -13,8 +13,7 @@ export const SigninContainer =() => {
 
      const [signinForm, setSigninForm] = useState({
             email: '',
-            password:'',
-          
+            password:''          
        });
 
        const {isSuccess, isPending, error, signinMutation} = useSignin();
@@ -32,7 +31,7 @@ export const SigninContainer =() => {
 
             await signinMutation({
                 email: signinForm.email,
-                password: signinForm.password,
+                password: signinForm.password
             });
        };
 
@@ -40,19 +39,22 @@ export const SigninContainer =() => {
                if(isSuccess){
                    setTimeout(()=> {
                        navigate('/home');
-                   },3000);
+                   }, 3000);
                }
-            }, [isSuccess, isPending]);
+
+            }, [isSuccess, navigate]);
+
        return(
         <SigninCard
             onSigninFormSubmit={onSigninFormSubmit}
             signinForm={signinForm}
             setSigninForm={setSigninForm}
             validationError={validationError}
+            error={error}
             isSuccess={isSuccess}
             isPending={isPending}
-            error={error}
+            
         />
-       );
+    );
 
 };

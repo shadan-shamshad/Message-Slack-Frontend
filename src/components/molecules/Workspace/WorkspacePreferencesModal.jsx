@@ -63,14 +63,14 @@ export const WorkspacePreferencesModal = ()=> {
    async function handleFormSubmit(e){
         e.preventDefault();
         try{
-            const ok = updateConfirmation();
+            const ok = await updateConfirmation();
             console.log('Confirmation received');
             if(!ok){
                 return;
             }
 
             await updateWorkspaceMutation(renameValue);
-            queryClient.invalidateQueries('fetchWorkspaces');
+            queryClient.invalidateQueries(`fetchWorkspaceById-${workspace?._id}`);
             setOpenPreferences(false);
             toast({
              title: 'Workspace updated successfully',
@@ -90,8 +90,8 @@ export const WorkspacePreferencesModal = ()=> {
         <ConfirmDialog/>
         <updateDialog/>
         <Dialog open={openPreferences} onOpenChange={handleClose}>
-            <DialogContent className="p-0 bg-gray-50 overflow-hidden">
-                <DialogHeader className="p-4 border-b bg-white">
+            <DialogContent>
+                <DialogHeader>
                     <DialogTitle>
                         {initialValue}
                     </DialogTitle>
@@ -105,7 +105,7 @@ export const WorkspacePreferencesModal = ()=> {
                                     <p className="font-semibold text-sm">
                                         Workspace Name
                                     </p>
-                                    <p className="font-semibold text-sm hover:underline">
+                                    <p  className='text-sm font-semibold hover:underline'>
                                         Edit
                                     </p>
                             </div>
@@ -123,7 +123,7 @@ export const WorkspacePreferencesModal = ()=> {
                             <form className="space-y-4" onSubmit={handleFormSubmit}>
                                 <Input
                                     value={renameValue}
-                                    onChange={(e)=> setRenameValue(e.target.value)}
+                                    onChange={(e) => setRenameValue(e.target.value)}
                                     required
                                     autoFocus
                                     minLength ={3}
@@ -160,12 +160,12 @@ export const WorkspacePreferencesModal = ()=> {
                     >
                         <TrashIcon className="size-5"/>
                         <p className="text-sm font-semibold ">
-                            DeleteWorkspace
+                            Delete Workspace
                         </p>
                     </Button>
                 </div>
             </DialogContent>
         </Dialog>
         </>
-    )
-}
+    );
+};

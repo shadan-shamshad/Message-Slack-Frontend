@@ -34,5 +34,5 @@ export const WorkspaceSidebar = () => {
             <UserButton/>
         </div>
        </aside>
-    )
-}
+    );
+};
