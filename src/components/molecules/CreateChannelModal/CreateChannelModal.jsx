@@ -2,8 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useAddChannelToWorkspace } from "@/hooks/apis/workspaces/useAddChannelToWorkspace";
-//import { useCurrentWorkspace } from "@/hooks/apis/workspaces/useCurrentWorkspace";
+
 import { useCreateChannelModal } from "@/hooks/context/useCreateChannelModal";
+import { useCurrentWorkspace } from "@/hooks/context/useCurrentWorkspace";
 import { useToast } from "@/hooks/use-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";

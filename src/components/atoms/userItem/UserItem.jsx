@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-//import { useCurrentWorkspace } from '@/hooks/context/useCurrentWorkspace';
+
 import { cn } from '@/lib/utils';
+import { useCurrentWorkspace } from '@/hooks/context/useCurrentWorkspace';
 
 const userItemVariants = cva(
     'flex items-center gap-1.5 justify-start font-normal h-7 px-4 mt-2 text-sm',

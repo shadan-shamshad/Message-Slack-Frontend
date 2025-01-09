@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-//import { useCurrentWorkspace } from "@/hooks/apis/workspaces/useCurrentWorkspace";
+
 import { useGetWorkspaceById } from "@/hooks/apis/workspaces/useGetWorkspaceById";
 import { useAuth } from "@/hooks/context/useAuth";
+import { useCurrentWorkspace } from "@/hooks/context/useCurrentWorkspace";
 import { InfoIcon, LucideLoader2, SearchIcon } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,6 +26,7 @@ export const WorkspaceNavbar = () => {
             }
         }
         
+
         if(workspace) {
             setCurrentWorkspace(workspace);
         }
